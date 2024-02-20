@@ -1664,11 +1664,17 @@
   #undef INTERNAL_I2C_PULLUPS
 #endif
 
+#if defined(FLYING_BISCUIT)
+  #define LSM6DS3_SENSOR
+  // #define ACC_ORIENTATION(X, Y, Z)  {imu.accADC[ROLL]  = X; imu.accADC[PITCH]  = Y; imu.accADC[YAW]  = Z;}
+  #define GYRO_ORIENTATION(X, Y, Z) {imu.gyroADC[ROLL] = X; imu.gyroADC[PITCH] = -Y; imu.gyroADC[YAW] = Z;}
+#endif
+
 /**************************************************************************************/
 /***************              Sensor Type definitions              ********************/
 /**************************************************************************************/
 
-#if defined(ADXL345) || defined(BMA020) || defined(BMA180) || defined(BMA280) || defined(MMA7455) || defined(ADCACC) || defined(LIS3LV02) || defined(LSM303DLx_ACC) || defined(MPU6050) || defined(LSM330) || defined(MMA8451Q)
+#if defined(ADXL345) || defined(BMA020) || defined(BMA180) || defined(BMA280) || defined(MMA7455) || defined(ADCACC) || defined(LIS3LV02) || defined(LSM303DLx_ACC) || defined(MPU6050) || defined(LSM330) || defined(MMA8451Q) || defined(LSM6DS3_SENSOR)
   #define ACC 1
 #else
   #define ACC 0
@@ -1680,7 +1686,7 @@
   #define MAG 0
 #endif
 
-#if defined(ITG3200) || defined(ITG3050) || defined(L3G4200D) || defined(MPU6050) || defined(LSM330) || defined(MPU3050) || defined(WMP)
+#if defined(ITG3200) || defined(ITG3050) || defined(L3G4200D) || defined(MPU6050) || defined(LSM330) || defined(MPU3050) || defined(WMP) || defined(LSM6DS3_SENSOR)
   #define GYRO 1
 #else
   #define GYRO 0

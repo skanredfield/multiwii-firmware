@@ -36,7 +36,7 @@
     //#define BI
     //#define TRI
     //#define QUADP
-    //#define QUADX
+    #define QUADX
     //#define Y4
     //#define Y6
     //#define HEX6
@@ -104,7 +104,7 @@
       //#define QUADRINO        // full FC board 9DOF+baro board from witespy  with BMP085 baro     <- confirmed by Alex
       //#define QUADRINO_ZOOM   // full FC board 9DOF+baro board from witespy  second edition
       //#define QUADRINO_ZOOM_MS// full FC board 9DOF+baro board from witespy  second edition       <- confirmed by Alex
-      //#define QUADRINO_NANO   // full FC board 9DOF+baro board+GPS from Lynxmotion / RobotShop    <- confirmed by Alex
+	  //#define QUADRINO_NANO   // full FC board 9DOF+baro board+GPS from Lynxmotion / RobotShop    <- confirmed by Alex
       //#define ALLINONE        // full FC board or standalone 9DOF+baro board from CSG_EU
       //#define AEROQUADSHIELDv2
       //#define ATAVRSBIN1      // Atmel 9DOF (Contribution by EOSBandi). requires 3.3V power.
@@ -160,6 +160,7 @@
       //#define MultiWii_32U4_SE_no_baro // Hextronik MultiWii_32U4_SE without the MS561101BA to free flash-memory for other functions
       //#define Flyduino9DOF       // Flyduino 9DOF IMU MPU6050+HMC5883l
       //#define Nano_Plane         // Multiwii Plane version with tail-front LSM330 sensor http://www.radiosait.ru/en/page_5324.html
+      #define FLYING_BISCUIT
       
     /***************************    independent sensors    ********************************/
       /* leave it commented if you already checked a specific board above */
@@ -171,6 +172,7 @@
       //#define L3G4200D
       //#define MPU6050       //combo + ACC
       //#define LSM330        //combo + ACC
+      //#define LSM6DS3_SENSOR
       
       /* I2C accelerometer */
       //#define MMA7455
@@ -365,7 +367,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
       //#define SERIAL_SUM_PPM         ROLL,PITCH,THROTTLE,YAW,AUX1,AUX2,AUX3,AUX4,8,9,10,11 //For Robe/Hitec/Futaba
       //#define SERIAL_SUM_PPM         ROLL,PITCH,YAW,THROTTLE,AUX1,AUX2,AUX3,AUX4,8,9,10,11 //For Multiplex
       //#define SERIAL_SUM_PPM         PITCH,ROLL,THROTTLE,YAW,AUX1,AUX2,AUX3,AUX4,8,9,10,11 //For some Hitec/Sanwa/Others
-      //#define SERIAL_SUM_PPM         THROTTLE,YAW,ROLL,PITCH,AUX1,AUX2,AUX3,AUX4,8,9,10,11 //Modelcraft
+      #define SERIAL_SUM_PPM         THROTTLE,YAW,PITCH,ROLL,AUX1,AUX2,AUX3,AUX4,8,9,10,11 //For some Hitec/Sanwa/Others
 
       // Uncommenting following line allow to connect PPM_SUM receiver to standard THROTTLE PIN on MEGA boards (eg. A8 in CRIUS AIO)
       //#define PPM_ON_THROTTLE
@@ -685,7 +687,8 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
     //#define MTK_BINARY16
     //#define MTK_BINARY19
     //#define INIT_MTK_GPS        // initialize MTK GPS for using selected speed, 5Hz update rate and GGA & RMC sentence or binary settings
-    //#define VENUS8
+	//#define VENUS8
+
 
     /* I2C GPS device made with an independant arduino + GPS device
        including some navigation functions

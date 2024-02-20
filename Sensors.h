@@ -63,6 +63,9 @@ void i2c_read_reg_to_buf(uint8_t add, uint8_t reg, uint8_t *buf, uint8_t size);
 #if defined(L3G4200D) || defined(LSM330)
   #define GYRO_SCALE ((4.0f * PI * 70.0f)/(1000.0f * 180.0f * 1000000.0f)) // 70 milli deg/s /digit => 1 deg/s = 1000/70 LSB
 #endif
+#if defined(LSM6DS3_SENSOR)
+  #define GYRO_SCALE ((4.0f * PI * 70.0f)/(1000.0f * 180.0f * 1000000.0f * 0.3f))
+#endif
 #if defined(WMP)
   #define GYRO_SCALE (1.0f/200e6f)
 #endif

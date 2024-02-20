@@ -8,6 +8,7 @@
 #include "IMU.h"
 #include "LCD.h"
 #include "Sensors.h"
+#include "SparkFunLSM6DS3.h"
 
 static void Device_Mag_getADC();
 static void Baro_init();
@@ -1303,6 +1304,41 @@ void Gyro_getADC () {
 // End Of I2C Gyroscope and Accelerometer LSM330
 // ************************************************************************************************************
 
+
+// ************************************************************************************************************
+// Start Of I2C Gyroscope and Accelerometer LSM6DS3
+// ************************************************************************************************************
+#if defined(LSM6DS3_SENSOR)
+
+LSM6DS3 myIMU;
+
+void ACC_init () {
+  delay(1000);
+  myIMU.begin();
+}
+
+void ACC_getADC () {
+  ACC_ORIENTATION( myIMU.readFloatAccelX() ,
+                   myIMU.readFloatAccelY() ,
+                   myIMU.readFloatAccelZ() );
+  ACC_Common();
+}
+
+void Gyro_init() {
+}
+
+void Gyro_getADC () {
+  GYRO_ORIENTATION( myIMU.readFloatGyroX()  ,
+                    myIMU.readFloatGyroY()  ,
+                    myIMU.readFloatGyroZ()  );
+  GYRO_Common();
+}
+
+#endif /* LSM6DS3 */
+
+// ************************************************************************************************************
+// End Of I2C Gyroscope and Accelerometer LSM6DS3
+// ************************************************************************************************************
 
 #if defined(WMP)
 // ************************************************************************************************************
